@@ -1,6 +1,12 @@
+#!/bin/bash
+
+#usage:
+#./correlate.sh <<file with hash:plaintext>> <<file with hash:user>>
+#outputs to STDOUT in format hash:plaintext:user
+
 while read line;
 do
    hash=$(echo $line | awk -F : '{print $1}'); 
-   user=$(grep $hash calc_hash_user.txt | awk -F : '{print $2}');
+   user=$(grep $hash $2 | awk -F : '{print $2}');
    echo $line:$user;
-done < calc_hash_cracked.txt
+done < $1
