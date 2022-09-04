@@ -37,8 +37,14 @@ done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	numberspecialcount=$(grep -E '[0-9]' | grep -E '[!-@#$%^&{}*()_+=?/><.,~`|\]' | wc -l)
-	numspec=$(awk -v var1=$numberspecialcount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $numberspecialcount "passwords with numbers and special characters, $numspec of all passwords."
+	numspecave=$(awk -v var1=$numberspecialcount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
+	echo $numberspecialcount "passwords with numbers and special characters, $numspecave of all passwords."
+done < e984a57019dca4d99c605d3fb.txt
+
+while IFS= read -r line; do
+	twelveormore=$(grep -E '.{12,}' | wc -l)
+	twelveave=$(awk -v var1=$twelveormore -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
+	echo $twelveormore "passwords that are twelve characters or more, $twelveave of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 #removing the temp file
@@ -46,4 +52,4 @@ rm e984a57019dca4d99c605d3fb.txt
 echo
 echo
 echo "The top ten reused passwords are:"
-echo -e $top10reuse$\n
+echo $top10reuse$\n
