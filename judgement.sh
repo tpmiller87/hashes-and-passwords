@@ -52,4 +52,4 @@ rm e984a57019dca4d99c605d3fb.txt
 echo
 echo
 echo "The top ten reused passwords are:"
-echo $top10reuse$\n
+echo -e "$top10reuse\n"
