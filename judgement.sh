@@ -1,7 +1,8 @@
 #!/bin/bash
 
+
 #total number of lines (passwords) in the input file.
-total_passes=$(cat $1 | wc -l)
+total_passes=$(sed '/^$/d' $1 | wc -l)
 #strip empty passwords and then sort them based on frequency, storing the top 10.
 top10reuse=$(cat $1 | sed '/^[[:space:]]*$/d' | sort | uniq -c | sort -k1nr | head -n 10)
 
@@ -9,7 +10,8 @@ echo $total_passes "total passwords loaded."
 
 #adding a newline at the beginning of the file and saving it to another temp file. Randomized as to not
 #delete a different file on the system.
-sed '1s/^/\n/' $1 > e984a57019dca4d99c605d3fb.txt
+sed '/^$/d' $1 > e984a57019dca4d99c605d3fb.txt
+sed -i '1s/^/\n/' e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	lowercount=$(grep -E '[a-z]' | wc -l)
