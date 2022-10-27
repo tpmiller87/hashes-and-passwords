@@ -15,38 +15,38 @@ sed -i '1s/^/\n/' e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	lowercount=$(grep -E '[a-z]' | wc -l)
-	lowerave=$(awk -v var1=$lowercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $lowercount "passwords with lowercase characters, $lowerave of all passwords."
+	lowerave=$(awk -v var1=$lowercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $lowercount "passwords with lowercase characters, $lowerave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	uppercount=$(grep -E '[A-Z]' | wc -l)
-	upperave=$(awk -v var1=$uppercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $uppercount "passwords with uppercase characters, $upperave of all passwords."
+	upperave=$(awk -v var1=$uppercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $uppercount "passwords with uppercase characters, $upperave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	numbercount=$(grep -E '[0-9]' | wc -l)
-	numave=$(awk -v var1=$numbercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $numbercount "passwords with numbers, $numave of all passwords."
+	numave=$(awk -v var1=$numbercount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $numbercount "passwords with numbers, $numave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	speccount=$(grep -E '[!-@#$%^&{}*()_+=?/><.,~`|\]' | wc -l)
-	specave=$(awk -v var1=$speccount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $speccount "passwords with special characters, $specave of all passwords."
+	specave=$(awk -v var1=$speccount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $speccount "passwords with special characters, $specave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	numberspecialcount=$(grep -E '[0-9]' | grep -E '[!-@#$%^&{}*()_+=?/><.,~`|\]' | wc -l)
-	numspecave=$(awk -v var1=$numberspecialcount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $numberspecialcount "passwords with numbers and special characters, $numspecave of all passwords."
+	numspecave=$(awk -v var1=$numberspecialcount -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $numberspecialcount "passwords with numbers and special characters, $numspecave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 while IFS= read -r line; do
 	twelveormore=$(grep -E '.{12,}' | wc -l)
-	twelveave=$(awk -v var1=$twelveormore -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }')
-	echo $twelveormore "passwords that are twelve characters or more, $twelveave of all passwords."
+	twelveave=$(awk -v var1=$twelveormore -v var2=$total_passes 'BEGIN { print  ( var1 / var2 ) }' | cut -d '.' -f 2 | cut -c 1,2)
+	echo $twelveormore "passwords that are twelve characters or more, $twelveave% of all passwords."
 done < e984a57019dca4d99c605d3fb.txt
 
 #removing the temp file
