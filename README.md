@@ -8,10 +8,8 @@ Example:
 
 mypassword:):chungus -> mypassword | ) | chungus
 
-judgement.sh takes a password file in plaintext and shows the statistics regarding the complexity of each password and how many passwords match said complexity level. It also shows passwords that have numbers AND special characters, as well as passwords that are twelve (12) characters or longer. The top ten reused passwords are also presented. Percentages are in tenths and hundredths.
+judgement.sh takes a password file in plaintext and shows the statistics regarding the complexity of each password and how many passwords match said complexity level. It also shows passwords that have numbers AND special characters, as well as passwords that are twelve (12) characters or longer. The top ten reused passwords are also presented.
 
 Example:
 
-862 passwords that are twelve characters or more, 0.395958 of all passwords.
-
-There are 862 passwords that contain at least twelve characters and represents ~40% of all passwords.
+862 passwords that are twelve characters or more, 40% of all passwords.
