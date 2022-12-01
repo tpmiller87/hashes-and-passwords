@@ -1,11 +1,18 @@
 #!/bin/bash
 
-#usage:
-# ./correlate.sh <<file with hash:plaintext>> <<file with hash:user>>
-# Outputs to STDOUT in format hash:plaintext:user, alphabetized by user.
-# Also outputs to a csv, colon (:) delimited. If
-# a plaintext password contains a colon, it will add an extra
-# column and should stand out for correction.
+Help () {
+	echo "Usage: ./correlate.sh <<file with hash:plaintext>> <<file with hash:user>>"
+	echo "If a cracked plaintext password contains a colon it will add an extra column"
+	echo "to the .csv file and will need to be manually corrected."
+}
+
+if [[ $1 == '' ]]; then
+	echo "Please supply the files necessary or use -h for help"
+	exit
+elif [[ $1 == '-h' ]]; then
+	Help
+	exit
+fi
 
 while read line;
 do
