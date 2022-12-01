@@ -1,5 +1,20 @@
 #!/bin/bash
 
+Help () {
+	echo "Usage: ./judgement.sh <<file with plaintext passwords>>"
+	echo "Complexity levels are based off of Microsofts definition."
+	echo "Blank passwords are omitted which may cause a discrepancy between"
+	echo "the number of passwords supplied and the number of passwords evaluated"
+	echo "if blank passwords are not trimmed from the supplied password file."
+}
+
+if [[ $1 == '' ]]; then
+	echo "Please supply a file with plaintext passwords or use -h for help"
+	exit
+elif [[ $1 == '-h' ]]; then
+	Help
+	exit
+fi
 
 #total number of lines (passwords) in the input file.
 total_passes=$(sed '/^$/d' $1 | wc -l)
