@@ -8,8 +8,18 @@ Example:
 
 mypassword:):chungus -> mypassword | ) | chungus
 
+
+
 judgement.sh takes a password file in plaintext and shows the statistics regarding the complexity of each password and how many passwords match said complexity level. It also shows passwords that have numbers AND special characters, as well as passwords that are twelve (12) characters or longer. The top ten reused passwords are also presented.
 
-Example:
+Example output:
 
 862 passwords that are twelve characters or more, 40% of all passwords.
+
+
+
+passlengths.sh takes the password file in plaintext and shows the amount of characters in each password, currently set to 1-20 characters (in line with PTWS).
+
+Example output:
+
+467 passwords that are eight characters.
